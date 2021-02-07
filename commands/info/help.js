@@ -10,8 +10,6 @@ exports.run = async (client, message, args) => {
     // This will hide a folder from display that includes "hide: true" in their module.json
     if (!client.config.owners.includes(message.author.id)) module = client.helps.array().filter(x => !x.hide);
     const embed = new Discord.MessageEmbed()
-    .setColor(0x1d1d1d)
-    .setTimestamp(new Date())
     .setDescription(`Type \`${prefix}help [command]\` to get more specific information about a command.`)
     .setTitle("A bot")
     
@@ -35,15 +33,13 @@ exports.run = async (client, message, args) => {
       let example = command.help.example ? command.help.example : "No example provided.";
       
       let embed = new Discord.MessageEmbed()
-      .setColor(0x7289DA)
       .setTitle(name)
       .setDescription(desc)
-      .setThumbnail(client.user.displayAvatarURL())
-      .setFooter("[] optional, <> required. Don't includes these things while typing a command.")
-      .addField("Cooldown", cooldown)
-      .addField("Aliases", aliases, true)
-      .addField("Usage", usage, true)
-      .addField("Example", example, true)
+      .setThumbnail(client.user.displayAvatarURL({size: 4096, dynamic: true}))
+      .addField("Cooldown", "`" + cooldown + "`")
+      .addField("Aliases", "`" + aliases + "`")
+      .addField("Usage", "`" + usage + "`")
+      .addField("Example", "`" + example + "`")
       
       return message.channel.send(embed);
     } else {
