@@ -36,10 +36,10 @@ exports.run = async (client, message, args) => {
       .setTitle(name)
       .setDescription(desc)
       .setThumbnail(client.user.displayAvatarURL({size: 4096, dynamic: true}))
-      .addField("Cooldown", "`" + cooldown + "`")
-      .addField("Aliases", "`" + aliases + "`")
-      .addField("Usage", "`" + usage + "`")
-      .addField("Example", "`" + example + "`")
+      .addField("Cooldown:", "`" + cooldown + "`")
+      .addField("Aliases:", "`" + aliases + "`")
+      .addField("Usage:", "`" + usage + "`")
+      .addField("Example:", "`" + example + "`")
       
       return message.channel.send(embed);
     } else {
