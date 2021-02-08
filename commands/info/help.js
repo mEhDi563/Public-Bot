@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
     const embed = new Discord.MessageEmbed()
     .setDescription(`Type \`${prefix}help [command]\` to get more specific information about a command.`)
     .setAuthor("Help", client.user.displayAvatarURL({dynamic: true}))
-    .setThumbnail(client.user.displayAvatarURL({size: 4096,dynamic: true}))
+    .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
     
     for (const mod of module) {
       // You can change the .join(" | ") to commas, dots or every symbol.
@@ -36,7 +36,7 @@ exports.run = async (client, message, args) => {
       let embed = new Discord.MessageEmbed()
       .setTitle(name)
       .setDescription(desc)
-      .setThumbnail(client.user.displayAvatarURL({size: 4096, dynamic: true}))
+      .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
       .addField("Cooldown:", "`" + cooldown + "`")
       .addField("Aliases:", "`" + aliases + "`")
       .addField("Usage:", "`" + usage + "`")
@@ -45,7 +45,7 @@ exports.run = async (client, message, args) => {
       return message.channel.send(embed);
     } else {
       // If the user type the wrong command.
-      return message.channel.send({embed: {color: "RED", description: "Unknown command."}});
+      return message.channel.send({embed: { color: "RED", description: "```diff\n" + "Unknown command." + "```"}});
     }
   }
 }
