@@ -10,13 +10,13 @@ exports.run = async (client, message, args) => {
     // This will hide a folder from display that includes "hide: true" in their module.json
     if (!client.config.owners.includes(message.author.id)) module = client.helps.array().filter(x => !x.hide);
     const embed = new Discord.MessageEmbed()
-    .setDescription(`Type \`${prefix}help [command]\` to get more specific information about a command.`)
     .setAuthor("Help", client.user.displayAvatarURL({dynamic: true}))
     .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
+    .setDescription(`**Type** \`m!help [command]\` **to get more specific information about a command.**`)
     
     for (const mod of module) {
       // You can change the .join(" | ") to commas, dots or every symbol.
-      embed.addField(`${mod.name} (${mod.cmds.length})`, mod.cmds.map(x => `\`${x}\``).join(","));
+      embed.addField(`${mod.name} (${mod.cmds.length})`, mod.cmds.map(x => `\`${x}\``).join(", "));
     }
     
     return message.channel.send(embed);
@@ -53,8 +53,8 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: "help",
   description: "Show a command list.",
-  usage: "help [command]",
-  example: "m!help verify"
+  usage: "m!help [command]",
+  example: "m!help stats"
 }
 
 exports.conf = {
