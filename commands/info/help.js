@@ -11,12 +11,12 @@ exports.run = async (client, message, args) => {
     if (!client.config.owners.includes(message.author.id)) module = client.helps.array().filter(x => !x.hide);
     const embed = new Discord.MessageEmbed()
     .setDescription(`Type \`${prefix}help [command]\` to get more specific information about a command.`)
-    .setTitle("A bot")
-    .setThumbnail(client.user.displayAvatarURL())
+    .setAuthor("Help", client.user.displayAvatarURL({dynamic: true}))
+    .setThumbnail(client.user.displayAvatarURL({size: 4096,dynamic: true}))
     
     for (const mod of module) {
       // You can change the .join(" | ") to commas, dots or every symbol.
-      embed.addField(`${mod.name}`, mod.cmds.map(x => `\`${x}\``).join(","));
+      embed.addField(`${mod.name} [${mod.cmds.length}]`, mod.cmds.map(x => `\`${x}\``).join(","));
     }
     
     return message.channel.send(embed);
