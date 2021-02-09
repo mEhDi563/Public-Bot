@@ -12,7 +12,8 @@ exports.run = (client, message, args) => {
   if (user.bot) {
     return message.channel.send("Bot don`t Have level :/");
   }
-  let profile = leveling.Fetch(user.id+message.guild.id)
+  let profile = leveling.Fetch(user.id + message.guild.id)
+  
   let card = new canvacord.Rank()
     .setUsername(user.username)
     .setDiscriminator(user.discriminator)
