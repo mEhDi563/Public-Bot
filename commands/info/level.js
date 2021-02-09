@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
   if (user.bot) {
     return message.channel.send("Bot don`t Have level :/");
   }
-  let xp = db.get(`XP_${user.id}_${message.guild.id}`);
+  let xp = db.get(`nxp_${user.id}_${message.guild.id}`);
   const { level, remxp, levelxp } = getInfo(xp);
   if (xp === null) {
     xp = 0
