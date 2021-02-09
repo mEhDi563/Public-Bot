@@ -7,14 +7,15 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "discord.js": "^12.5.1",
-    "dotenv": "^8.2.0",
-    "quick.db": "^7.1.2",
-    "node-fetch": "^2.6.1",
-    "mongoose": "^5.11.13",
     "canvacord": "^5.0.8",
     "discord-leveling": "^1.1.0",
-    "mathjs": "^9.0.0"
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "mathjs": "^9.0.0",
+    "mongoose": "^5.11.13",
+    "node-fetch": "^2.6.1",
+    "quick.db": "^7.1.2",
+    "sequelize": "^6.5.0"
   },
   "engines": {
     "node": "14.x"
