@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 const { getInfo } = require("../../handler/XP.js");
+
 exports.run = (client, message, args) => {
   const user = message.mentions.users.first() || message.author;
 
@@ -27,8 +28,8 @@ exports.run = (client, message, args) => {
 exports.help = {
   name: "rank",
   description: "Show user's rank",
-  usage: "rank [mention user]",
-  example: "rank @Mat#0001"
+  usage: "m!rank [mention user]",
+  example: "m!rank @Mat#0001"
 };
 
 exports.conf = {
