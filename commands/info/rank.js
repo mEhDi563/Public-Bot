@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 const { getInfo } = require("../../handler/XP.js");
+const canvacord = require("canvacord");
 
 exports.run = (client, message, args) => {
   const user = message.mentions.users.first() || message.author;
@@ -16,14 +17,15 @@ exports.run = (client, message, args) => {
   if (xp === 0) {
     return message.channel.send(`${user.tag} Is Out of level`);
   }
-  let embed = new Discord.MessageEmbed()
-    .setAuthor(user.username, message.guild.iconURL())
-    .setThumbnail(user.avatarURL())
-    .setDescription(`**LEVEL** ${level}\n **XP:** ${remxp}/${levelxp}`)
+  let card = new canvacord.Rank()
+    .setUsername(user.username)
+    .setDiscriminator(user.discriminator)
+    .setLevel(level)
+    .setCurrentXP(rem)
     .setFooter(`Level Of: ${user.username}`, client.user.displayAvatarURL())
     .setTimestamp();
 
-  message.channel.send(embed);
+  message.channel.send(card);
 };
 exports.help = {
   name: "rank",
