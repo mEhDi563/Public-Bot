@@ -12,14 +12,13 @@ exports.run = (client, message, args) => {
   if (user.bot) {
     return message.channel.send("Bot don`t Have level :/");
   }
-  let nxp = db.get(`nxp_${user.id}_${message.guild.id}`);
   let profile = leveling.Fetch(user.id+message.guild.id)
   let card = new canvacord.Rank()
     .setUsername(user.username)
     .setDiscriminator(user.discriminator)
     .setLevel(profile.level)
     .setCurrentXP(profile.xp)
-    .setRequiredXP(nxp)
+    .setRequiredXP('150')
     .setStatus(user.presence.status)
     .setAvatar(user.displayAvatarURL({format: "png", size: 1024}));
   

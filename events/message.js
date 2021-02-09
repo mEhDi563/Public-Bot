@@ -56,15 +56,11 @@ module.exports = async (client, message) => {
   
   try {
     let profile = await leveling.Fetch(member.user.id + message.guild.id)
-    let nxp = await db.fetch(`nxp_`+message.guild.id+"_"+message.author.id)
-    if (profile.level === "undefined" || "null") profile.level = 0
-    if (profile.xp === "null" || "undefined") profile.xp = 0
     if (!commandFile) return;
     commandFile.run(client, message, args);
-    leveling.AddXP(member.user.id + message.guild.id, 2)
-    if (profile.xp + 2 > nxp) {
+    leveling.AddXp(member.user.id + message.guild.id, 1)
+    if (profile.xp + 1 > 150) {
       leveling.AddLevel(member.user.id + message.guild.id, 1)
-      db.add(`nxp_`+message.guild.id+"_"+message.author.id, 
     }
   } catch (error) {
     console.log(error.message);
