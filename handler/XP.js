@@ -21,10 +21,14 @@ class Util {
     return { level, remxp, levelxp };
   }
   static addexp(message) {
+    if (isNa(level || remxp || levelxp)) {
+      
+    }
+    
     let toadd = Math.floor(Math.random() * 3 + 1);
     let oldxp = db.get(`XP_${message.author.id}_${message.guild.id}`);
     let oldlvl = Util.getLevel(oldxp);
-    let newxp = (oldxp = toadd);
+    let newxp = (ldxp = toadd);
     let newlvl = Util.getLevel(newxp);
 
     if (newlvl > oldlvl)

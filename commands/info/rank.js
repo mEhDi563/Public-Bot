@@ -34,10 +34,10 @@ exports.run = (client, message, args) => {
   })
 };
 exports.help = {
-  name: "rank",
-  description: "Show user's rank",
-  usage: "m!rank [mention user]",
-  example: "m!rank @Mat#0001"
+  name: "level",
+  description: "Show user's server level",
+  usage: "m!level [mention user]",
+  example: "m!level @Mat#0001"
 };
 
 exports.conf = {
