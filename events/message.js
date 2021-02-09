@@ -1,6 +1,7 @@
 const Discord = require("discord.js"), cooldowns = new Discord.Collection(), db = require("quick.db");
 // cooldowns will store the user when they are still in the cooldown mode.
-const { addexp } = require("../handler/XP.js")
+const leveling = require("discord-leveling");
+const nxp = 100
 
 module.exports = async (client, message) => {
   // Prevent any chit-chats with other bots, or by himself.
@@ -55,9 +56,13 @@ module.exports = async (client, message) => {
   }
   
   try {
+    let profile = await leveling.Fetch(member.user.id + message.guild.id)
     if (!commandFile) return;
     commandFile.run(client, message, args);
-    return addexp(message);
+    leveling.AddXP(member.user.id + message.guild.id, 2)
+    if (profile.xp + 2 > nxp) {
+      leveling.AddLevel(member.user.id + message.guild.id, 1)
+    }
   } catch (error) {
     console.log(error.message);
   } finally {
