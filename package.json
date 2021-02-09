@@ -11,7 +11,8 @@
     "dotenv": "^8.2.0",
     "quick.db": "^7.1.2",
     "node-fetch": "^2.6.1",
-    "mongoose": "^5.11.13"
+    "mongoose": "^5.11.13",
+    "canvacord": "^5.0.8"
   },
   "engines": {
     "node": "14.x"
