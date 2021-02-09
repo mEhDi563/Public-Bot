@@ -12,10 +12,10 @@ exports.run = (client, message, args) => {
   if (user.bot) {
     return message.channel.send("Bot don`t Have level :/");
   }
-  let xp = db.get(`xp_${user.id}_${message.guild.id}`) || 0;
+  let xp = db.get(`XP_${user.id}_${message.guild.id}`);
   const { level, remxp, levelxp } = getInfo(xp);
-  if (xp === 0) {
-    return message.channel.send(`${user.tag} Is Out of level`);
+  if (xp === null) {
+    xp = 0
   }
   let card = new canvacord.Rank()
     .setUsername(user.username)
@@ -24,11 +24,14 @@ exports.run = (client, message, args) => {
     .setCurrentXP(`${remxp}`)
     .setRequiredXP(`${levelxp}`)
     .setStatus(user.presence.status)
-    .setImage(user.displayAvatarURL({format: "png", size: 1024}));
+    .setAvatar(user.displayAvatarURL({format: "png", size: 1024}));
   
   const img = card.build()
-
-  message.channel.send(new Discord.MessageAttachment(img, "rank.png"));
+  .then(data => {
+    const attachment = new Discord.MessageAttachment(data, "rank.png")
+    
+    message.channel.send(attachment);
+  })
 };
 exports.help = {
   name: "rank",

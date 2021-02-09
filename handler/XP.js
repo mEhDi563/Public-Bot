@@ -22,7 +22,7 @@ class Util {
   }
   static addexp(message) {
     let toadd = Math.floor(Math.random() * 3 + 1);
-    let oldxp = db.get(`xp_${message.author.id}_${message.guild.id}`);
+    let oldxp = db.get(`XP_${message.author.id}_${message.guild.id}`);
     let oldlvl = Util.getLevel(oldxp);
     let newxp = (oldxp = toadd);
     let newlvl = Util.getLevel(newxp);
@@ -31,7 +31,7 @@ class Util {
       message.channel.send(
         `${message.author}, You Just Reached Level ${newlvl}`
       );
-    db.add(`xp_${message.author.id}_${message.guild.id}`, toadd);
+    db.add(`XP_${message.author.id}_${message.guild.id}`, toadd);
   }
 }
 module.exports = Util;
