@@ -20,12 +20,15 @@ exports.run = (client, message, args) => {
   let card = new canvacord.Rank()
     .setUsername(user.username)
     .setDiscriminator(user.discriminator)
-    .setLevel(level)
-    .setCurrentXP(rem)
-    .setFooter(`Level Of: ${user.username}`, client.user.displayAvatarURL())
-    .setTimestamp();
+    .setLevel(`${level}`)
+    .setCurrentXP(`${remxp}`)
+    .setRequiredXP(`${levelxp}`)
+    .setStatus(user.presence.status)
+    .setImage(user.displayAvatarURL({format: "png", size: 1024}));
+  
+  const img = card.build()
 
-  message.channel.send(card);
+  message.channel.send(new Discord.MessageAttachment(img, "rank.png"));
 };
 exports.help = {
   name: "rank",
