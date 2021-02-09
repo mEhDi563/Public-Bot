@@ -15,7 +15,8 @@
     "mongoose": "^5.11.13",
     "node-fetch": "^2.6.1",
     "quick.db": "^7.1.2",
-    "sequelize": "^6.5.0"
+    "sequelize": "^6.5.0",
+    "sqlite3": "^5.0.1"
   },
   "engines": {
     "node": "14.x"
