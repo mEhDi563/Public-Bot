@@ -1,6 +1,6 @@
 const Discord = require("discord.js"), cooldowns = new Discord.Collection(), db = require("quick.db"), math = require("mathjs");
 // cooldowns will store the user when they are still in the cooldown mode.
-const { addexp } = require("..");
+const { addexp } = require("../handler/xp.js");
 
 module.exports = async (client, message) => {
   // Prevent any chit-chats with other bots, or by himself.
@@ -57,6 +57,7 @@ module.exports = async (client, message) => {
   try {
     if (!commandFile) return;
     commandFile.run(client, message, args);
+    return addexp(message);
   } catch (error) {
     console.log(error.message);
   } finally {

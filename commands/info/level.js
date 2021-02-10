@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 const canvacord = require("canvacord");
-const leveling = Math.floor();
+const { addexp } = require("../../handler/xp.js");
 
 exports.run = (client, message, args) => {
   const user = message.mentions.users.first() || message.author;
@@ -12,14 +12,16 @@ exports.run = (client, message, args) => {
   if (user.bot) {
     return message.channel.send("Bot don`t Have level :/");
   }
-  let profile = leveling.Fetch(user.id + message.guild.id)
+  let xp = db.get(`xp_${user.id}_${message.guild.id}`)
+  
+  const { level, remxp, levelxp } = addexp(xp)
   
   let card = new canvacord.Rank()
     .setUsername(user.username)
     .setDiscriminator(user.discriminator)
-    .setLevel(profile.level)
-    .setCurrentXP(profile.xp)
-    .setRequiredXP('150')
+    .setLevel(level)
+    .setCurrentXP(remxp)
+    .setRequiredXP(levelxp)
     .setStatus(user.presence.status)
     .setAvatar(user.displayAvatarURL({format: "png", size: 1024}));
   
