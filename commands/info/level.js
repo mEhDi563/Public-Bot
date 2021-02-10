@@ -4,7 +4,7 @@ const canvacord = require("canvacord");
 const { addexp } = require("../../handler/xp.js");
 
 exports.run = (client, message, args) => {
-  const user = message.mentions.users.first() || message.author;
+  const user = message.author
 
   if (user.id === client.user.id) {
     return message.channel.send("I on Level 999");
