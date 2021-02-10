@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 const canvacord = require("canvacord");
-const leveling = require("discord-leveling");
+const leveling = Math.floor();
 
 exports.run = (client, message, args) => {
   const user = message.mentions.users.first() || message.author;

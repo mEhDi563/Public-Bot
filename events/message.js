@@ -1,5 +1,6 @@
 const Discord = require("discord.js"), cooldowns = new Discord.Collection(), db = require("quick.db"), math = require("mathjs");
 // cooldowns will store the user when they are still in the cooldown mode.
+const { addexp } = require("..");
 
 module.exports = async (client, message) => {
   // Prevent any chit-chats with other bots, or by himself.
@@ -46,7 +47,7 @@ module.exports = async (client, message) => {
     
     if (now < expirationTime) {
       const timeLeft = (expirationTime - now) / 1000;
-      return message.channel.send({embed: "```diff\n"+`- Calm down dude, please wait **${timeLeft.toFixed(1)}** seconds to try the command again.`+"```",color: "RED"});
+      return message.channel.send({embed: { description: "```diff\n"+`- Calm down dude, please wait **${timeLeft.toFixed(1)}** seconds to try the command again.`+"```",color: "RED" }});
     }
     
     timestamps.set(member.id, now);
