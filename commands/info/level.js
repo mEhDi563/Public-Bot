@@ -1,10 +1,10 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 const canvacord = require("canvacord");
-const { addexp } = require("../../handler/xp.js");
+const { getInfo } = require("../../handler/xp.js");
 
 exports.run = (client, message, args) => {
-  const user = message.author
+  const user = message.mentions.users.first() || message.author
 
   if (user.id === client.user.id) {
     return message.channel.send("I on Level 999");
@@ -14,9 +14,10 @@ exports.run = (client, message, args) => {
   }
   let xp = db.get(`xp_${user.id}_${message.guild.id}`) || 0
   
-  const { level, remxp, levelxp } = addexp(xp)
+  const { level, remxp, levelxp } = getInfo(xp)
   
   let card = new canvacord.Rank()
+    .setRank(`n/a`)
     .setUsername(user.username)
     .setDiscriminator(user.discriminator)
     .setLevel(level)
