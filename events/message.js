@@ -60,8 +60,8 @@ module.exports = async (client, message) => {
     commandFile.run(client, message, args);
     leveling.AddXp(message.author.id + message.guild.id, 1)
     if (profile.xp + 1 > 150) {
-      leveling.AddLevel(message.author.id + message.guild.id, 1)
-      leveling.SetXp(message.author.id + message.guild.id, 0)
+      await leveling.AddLevel(message.author.id + message.guild.id, 1)
+      await leveling.SetXp(message.author.id + message.guild.id, 0)
     }
   } catch (error) {
     console.log(error.message);
