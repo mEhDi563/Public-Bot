@@ -17,7 +17,7 @@ exports.run = (client, message, args) => {
   const { level, remxp, levelxp } = getInfo(xp)
   
   let card = new canvacord.Rank()
-    .setRank(`n/a`)
+    .setRank(0)
     .setUsername(user.username)
     .setDiscriminator(user.discriminator)
     .setLevel(level)
