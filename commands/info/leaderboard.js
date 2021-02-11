@@ -2,16 +2,17 @@ const Discord = require("discord.js");
 const db = require("quick.db");
 
 exports.run = (client, message, args) => {
-  
+  message.channel.send({embed:{color: "RED", description: "```diff\n"+"- Still on development..."+"```"}});
 };
+
 exports.help = {
-  name: "level",
-  description: "Show user's server level",
-  usage: "m!level [mention user]",
-  example: "m!level @Mat#0001"
+  name: "leaderboard",
+  description: "Show's server leaderboard",
+  usage: "m!leaderboard",
+  example: "m!leaderboard"
 };
 
 exports.conf = {
-  aliases: [""],
+  aliases: ["lb"],
   cooldown: 5
 };
