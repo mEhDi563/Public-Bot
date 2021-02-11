@@ -38,7 +38,7 @@ module.exports = async (client, message) => {
         cooldownAmount = (commandFile.conf.cooldown || 3) * 1000;
   
   if (!timestamps.has(member.id)) {
-    if (!client.config.owners.includes(message.author.id)) {
+    if (!client.config.owners.includes()) {
       // If the user wasn't you or other owners that stored in config.json
       timestamps.set(member.id, now);
     }

@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const db = require("quick.db");
 
 exports.run = (client, message, args) => {
-  message.channel.send({embed:{color: "RED", description: "```diff\n"+"- Still on development..."+"```"}});
+  message.channel.send({embed:{color: "RED", description: "```diff\n"+"- Still on development."+"```"}});
 };
 
 exports.help = {

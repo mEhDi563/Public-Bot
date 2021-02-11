@@ -28,7 +28,7 @@ exports.run = (client, message, args) => {
   
   const img = card.build()
   .then(data => {
-    const attachment = new Discord.MessageAttachment(data, "rank.png")
+    const attachment = new Discord.MessageAttachment(data, "level.png")
     
     message.channel.send(attachment);
   })
