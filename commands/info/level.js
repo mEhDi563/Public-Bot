@@ -30,7 +30,8 @@ exports.run = (client, message, args) => {
   .then(data => {
     const attachment = new Discord.MessageAttachment(data, "rank.png")
     
-    message.ch
+    message.channel.send(attachment);
+  })
 };
 exports.help = {
   name: "level",
