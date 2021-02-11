@@ -11,8 +11,8 @@ client.on("ready", () => {
   
   client.user.setStatus("idle");
 })
-client.on("warn", console.warn); // This will warn you via logs if there was something wrong with your bot.
-client.on("error", console.error); // This will send you an error message via logs if there was something missing with your coding.
+client.on("warn", console.warn)// This will warn you via logs if there was something wrong with your bot.
+client.on("error", console.error)// This will send you an error message via logs if there was something missing with your coding.
 setInterval(async () => {
   await fetch("https://matl-public-bot.glitch.me")
 }, 5000)

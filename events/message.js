@@ -59,7 +59,7 @@ module.exports = async (client, message) => {
     commandFile.run(client, message, args);
     return addexp(message);
   } catch (error) {
-    console.log(error.message);
+    
   } finally {
     // If you want to really know, who is typing or using your bot right now.
     console.log(`${sender.tag} (${sender.id}) ran a command: ${cmd}`);
